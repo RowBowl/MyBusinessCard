@@ -41,6 +41,7 @@ import androidx.compose.ui.graphics.Shader
 import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -79,7 +80,7 @@ class MainActivity : ComponentActivity() {
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .padding(12.dp)
-                .fillMaxHeight()
+                .fillMaxSize()
         ) {
             ProfilePicture("Robel", "Beyene", "Android Developer",
                 modifier = Modifier)
@@ -105,7 +106,11 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun ProfilePicture(firstName: String, lastName: String, title: String, modifier: Modifier = Modifier) {
+    fun ProfilePicture(firstName: String,
+                       lastName: String,
+                       title: String,
+                       modifier: Modifier = Modifier) {
+
         val image = painterResource(R.drawable.robel_profile_pic)
         val borderWidth = 12.dp
         Column (
@@ -119,7 +124,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .aspectRatio(1f)
                     .border(
-                        BorderStroke(borderWidth, Color.Magenta),
+                        BorderStroke(borderWidth, colorResource(R.color.columbia_blue)),
                         CircleShape
                     )
                     .padding(borderWidth)
@@ -138,8 +143,8 @@ class MainActivity : ComponentActivity() {
         }
     }
     @Composable
-    fun ContactInfoBlock(borderColor: ULong = Color.Red.value,
-                         backgroundColor: ULong = Color.Blue.value,
+    fun ContactInfoBlock(borderColor: Color = colorResource(R.color.columbia_blue),
+                         backgroundColor: Color = colorResource(R.color.indigo_dye),
                          icon1: ImageVector,
                          icon2: ImageVector,
                          string1: String,
@@ -149,7 +154,8 @@ class MainActivity : ComponentActivity() {
 
         Column (
             modifier = Modifier
-                .border(3.dp, Color(borderColor))
+                .background(backgroundColor)
+                .border(3.dp, borderColor)
                 .fillMaxWidth()
                 .padding(8.dp)
                 .height(100.dp)
@@ -166,7 +172,8 @@ class MainActivity : ComponentActivity() {
                 )
                 Text(
                     text = string1,
-                    modifier = Modifier
+                    modifier = Modifier,
+                    color = colorResource(id = R.color.alabaster)
                 )
             }
             Row {
@@ -177,7 +184,9 @@ class MainActivity : ComponentActivity() {
                 )
                 Text(
                     text = string2,
-                    modifier = Modifier
+                    modifier = Modifier,
+                    color = colorResource(id = R.color.alabaster)
+
                 )
             }
         }
