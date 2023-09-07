@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
@@ -69,7 +70,9 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun BusinessCard(modifier: Modifier = Modifier) {
         Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
+                .padding(12.dp)
         ) {
             ProfilePicture("Robel", "Beyene",
                 modifier = Modifier)
@@ -93,7 +96,8 @@ class MainActivity : ComponentActivity() {
         val image = painterResource(R.drawable.robel_profile_pic)
         val borderWidth = 12.dp
         Column (
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.width(200.dp)
         ) {
             Image(
                 painter = image,
@@ -111,7 +115,7 @@ class MainActivity : ComponentActivity() {
             Text (
                 text = "$firstName $lastName",
                 fontWeight = FontWeight.Bold,
-                fontSize = 50.sp,
+                fontSize = 30.sp,
                 modifier = Modifier
             )
         }
