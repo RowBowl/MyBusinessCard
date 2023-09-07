@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="seasalt">#F7F9F9</color>
-    <color name="ash_gray">#BED8D4</color>
-    <color name="tiffany_blue">#78D5D7</color>
-    <color name="pale_azure">#63D2FF</color>
-    <color name="steel_blue">#2081C3</color>
+  <color name="myrtle_green">#4a6c6f</color>
+  <color name="champagne_pink">#fbe1d0</color>
+  <color name="alabaster">#ecece4</color>
+  <color name="columbia_blue">#cee9f2</color>
+  <color name="indigo_dye" >#014e81</color>
 </resources>
+

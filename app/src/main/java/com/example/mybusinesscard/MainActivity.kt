@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -58,37 +59,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    companion object Colors {
-
-    }
 
     @Preview(showBackground = true)
     @Composable
     fun BusinessCardPreview() {
+        BusinessCard()
     }
 
     @Composable
     fun BusinessCard(modifier: Modifier = Modifier) {
         Column (
             modifier = Modifier
-                .padding(5.dp)
-                .fillMaxSize(),
         ) {
-            //ProfilePicture("Robel", "Beyene", Modifier.weight(1f))
+            ProfilePicture("Robel", "Beyene",
+                modifier = Modifier)
             //Phone number and email
             ContactInfoBlock( string1 = stringResource(R.string.contact_phone_number),
                 string2 = stringResource(R.string.contact_email),
                 icon1 = Icons.Outlined.Phone,
                 icon2 = Icons.Outlined.MailOutline,
-                borderColor = Color.Red,
-                modifier = Modifier.weight(1f))
+                modifier = Modifier)
             //important sites
             ContactInfoBlock( string1 = stringResource(R.string.link_linkedin),
                 string2 = stringResource(R.string.link_github),
                 icon1 = Icons.Outlined.KeyboardArrowRight,
                 icon2 = Icons.Outlined.KeyboardArrowRight,
-                borderColor = Color.Red,
-                modifier = Modifier.weight(1f))
+                modifier = Modifier)
         }
     }
 
@@ -111,19 +107,18 @@ class MainActivity : ComponentActivity() {
                     )
                     .padding(borderWidth)
                     .clip(CircleShape)
-                    .weight(1f)
-
             )
             Text (
                 text = "$firstName $lastName",
                 fontWeight = FontWeight.Bold,
-                fontSize = 50.sp
+                fontSize = 50.sp,
+                modifier = Modifier
             )
-
         }
     }
     @Composable
-    fun ContactInfoBlock(borderColor: Color = Color.Red,
+    fun ContactInfoBlock(borderColor: ULong = Color.Red.value,
+                         backgroundColor: ULong = Color.Blue.value,
                          icon1: ImageVector,
                          icon2: ImageVector,
                          string1: String,
@@ -133,14 +128,13 @@ class MainActivity : ComponentActivity() {
 
         Column (
             modifier = Modifier
-                .border(
-                    border = BorderStroke(3.dp, borderColor)
-                )
-                .padding(16.dp)
                 .fillMaxWidth()
+                .border(
+                    border = BorderStroke(3.dp, Color(borderColor))
+                )
         ) {
             Row(
-
+                modifier = Modifier.background(Color(backgroundColor))
             ) {
                 Icon(icon1, contentDescription = "Phone Number Icon",
                     modifier = Modifier
