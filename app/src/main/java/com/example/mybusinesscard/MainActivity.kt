@@ -7,12 +7,17 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -54,7 +59,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    BusinessCard()
                 }
             }
         }
@@ -71,17 +76,25 @@ class MainActivity : ComponentActivity() {
     fun BusinessCard(modifier: Modifier = Modifier) {
         Column (
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .padding(12.dp)
+                .fillMaxHeight()
         ) {
-            ProfilePicture("Robel", "Beyene",
+            ProfilePicture("Robel", "Beyene", "Android Developer",
                 modifier = Modifier)
+
+            Spacer(modifier = Modifier.size(50.dp))
+
             //Phone number and email
             ContactInfoBlock( string1 = stringResource(R.string.contact_phone_number),
                 string2 = stringResource(R.string.contact_email),
                 icon1 = Icons.Outlined.Phone,
                 icon2 = Icons.Outlined.MailOutline,
                 modifier = Modifier)
+
+            Spacer(modifier = Modifier.size(25.dp))
+
             //important sites
             ContactInfoBlock( string1 = stringResource(R.string.link_linkedin),
                 string2 = stringResource(R.string.link_github),
@@ -92,7 +105,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun ProfilePicture(firstName: String, lastName: String, modifier: Modifier = Modifier) {
+    fun ProfilePicture(firstName: String, lastName: String, title: String, modifier: Modifier = Modifier) {
         val image = painterResource(R.drawable.robel_profile_pic)
         val borderWidth = 12.dp
         Column (
@@ -118,6 +131,10 @@ class MainActivity : ComponentActivity() {
                 fontSize = 30.sp,
                 modifier = Modifier
             )
+            Text (
+                text = title,
+                fontSize = 16.sp
+            )
         }
     }
     @Composable
@@ -132,31 +149,35 @@ class MainActivity : ComponentActivity() {
 
         Column (
             modifier = Modifier
+                .border(3.dp, Color(borderColor))
                 .fillMaxWidth()
-                .border(
-                    border = BorderStroke(3.dp, Color(borderColor))
-                )
+                .padding(8.dp)
+                .height(100.dp)
+            , verticalArrangement = Arrangement.Center
         ) {
-            Row(
-                modifier = Modifier.background(Color(backgroundColor))
+
+            Row (
+                Modifier.padding(bottom = 10.dp)
             ) {
-                Icon(icon1, contentDescription = "Phone Number Icon",
+                Icon(
+                    icon1, contentDescription = "Phone Number Icon",
                     modifier = Modifier
-                        .weight(1f)
-                        .align(Alignment.CenterVertically)
-                        .padding(end = 4.dp))
+                        .padding(end = 8.dp)
+                )
                 Text(
                     text = string1,
-                    modifier = Modifier.weight(8f)
-                )
-                Icon(icon2, contentDescription = "Email Icon",
                     modifier = Modifier
-                        .weight(1f)
-                        .align(Alignment.CenterVertically)
-                        .padding(end = 4.dp))
+                )
+            }
+            Row {
+                Icon(
+                    icon2, contentDescription = "Email Icon",
+                    modifier = Modifier
+                        .padding(end = 8.dp)
+                )
                 Text(
                     text = string2,
-                    modifier = Modifier.weight(8f)
+                    modifier = Modifier
                 )
             }
         }
