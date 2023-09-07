@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyBusinessCard</string>
+    <string name="contact_phone_number">240-595-7173</string>
+    <string name="contact_email">robelrb@gmail.com</string>
+    <string name="link_linkedin">www.linkedin.com/in/robel-beyene</string>
+    <string name="link_github">https://github.com/RowBowl/</string>
+</resources>
